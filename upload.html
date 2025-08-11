@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Upload Prescription</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>.preview{margin-top:1rem;max-width:100%;border-radius:var(--radius);}</style>
+</head>
+<body>
+  <header>
+   <div class="logo"><img src="logo.png" alt="" width="300px" height="200px"></div>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Upload Your Prescription</h2>
+      <input id="fileInput" type="file" accept="image/*,application/pdf" style="margin-top:0.8rem;">
+      <img id="previewImg" class="preview" style="display:none;">
+      <div style="margin-top:0.8rem">
+        <button id="submitBtn" class="btn">Submit (run OCR)</button>
+        <small class="muted">Note: OCR is not implemented in this prototype. This button simulates processing and redirects to review.</small>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('previewImg');
+    fileInput.addEventListener('change', (e)=>{
+      const f = e.target.files && e.target.files[0];
+      if(!f) return;
+      if(f.type.startsWith('image/')){
+        const reader = new FileReader();
+        reader.onload = (ev)=>{ preview.src = ev.target.result; preview.style.display='block'; }
+        reader.readAsDataURL(f);
+      } else {
+        preview.style.display='none';
+        alert('PDF preview is not shown in this demo.');
+      }
+    });
+    document.getElementById('submitBtn').addEventListener('click', ()=>{
+      alert('Simulating OCR... Redirecting to Review page.');
+      location.href = 'review.html';
+    });
+  </script>
+</body>
+</html>
