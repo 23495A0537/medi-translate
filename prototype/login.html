@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login • MediTranslate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .auth-wrap{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:1rem;}
+    @media(max-width:900px){.auth-wrap{grid-template-columns:1fr}}
+    .logo-box{display:flex;align-items:center;gap:0.8rem}
+    .logo-box .logo{font-weight:700}
+    .input{display:flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.03);padding:0.7rem;border-radius:10px}
+  </style>
+</head>
+<body>
+  <header >
+    <div class="logo"><img src="logo.png" alt="" width="300px" height="200px"></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="auth-wrap">
+      <aside class="card">
+        <div class="logo-box">
+         
+          <div>
+            <h2>MediTranslate</h2>
+            <small class="muted">Translate prescriptions • Stay on schedule</small>
+          </div>
+        </div>
+        <p style="margin-top:1rem">Upload your prescription (photo or PDF), verify the extracted medicines, and receive timely reminders so you never miss a dose.</p>
+        <div style="margin-top:1rem;">
+          <div class="pill card" style="display:inline-block;padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);">OCR & AI</div>
+          <div class="pill card" style="display:inline-block;padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);">Edit & Confirm</div>
+          <div class="pill card" style="display:inline-block;padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);">Smart Reminders</div>
+        </div>
+      </aside>
+
+      <section class="card">
+        <div style="display:flex;gap:0.5rem;margin-bottom:0.6rem">
+          <button id="tLogin" class="btn" style="flex:1;">Login</button>
+          <button id="tSignup" class="btn" style="flex:1;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.06)">Sign up</button>
+        </div>
+
+        <form id="loginForm" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+  <label>Email</label>
+  <div class="input"><input id="emailLogin" type="email" placeholder="Enter email" required></div>
+  <label style="margin-top:0.6rem">Password</label>
+  <div class="input"><input id="passLogin" type="password" placeholder="••••••" required></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.6rem">
+    <label><input type="checkbox"> Remember</label>
+    <a href="reset.html" style="color:var(--accent)">Forgot?</a>
+  </div>
+  <button class="btn" style="margin-top:0.8rem" type="submit">Login</button>
+</form>
+
+        <form id="signupForm" style="display:none">
+          <label>Full name</label>
+          <div class="input"><input type="text" placeholder="Enter full name"></div>
+          <label style="margin-top:0.6rem">Email</label>
+          <div class="input"><input type="email" placeholder="Enter email"></div>
+          <label style="margin-top:0.6rem">Password</label>
+          <div class="input"><input type="password" placeholder="Create password"></div>
+          <label style="margin-top:0.6rem">Age (optional)</label>
+          <div class="input"><input type="number" placeholder="e.g., 34"></div>
+          <button class="btn" style="margin-top:0.8rem">Create account</button>
+        </form>
+
+        <small class="muted" style="display:block;margin-top:0.6rem">This is a frontend prototype. No real auth.</small>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const tLogin = document.getElementById('tLogin');
+    const tSignup = document.getElementById('tSignup');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    tLogin.addEventListener('click', ()=>{ loginForm.style.display='block'; signupForm.style.display='none'; });
+    tSignup.addEventListener('click', ()=>{ loginForm.style.display='none'; signupForm.style.display='block'; });
+  </script>
+</body>
+</html>
